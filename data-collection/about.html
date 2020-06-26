@@ -1,0 +1,39 @@
+<!-- Written by Ethan Zentz - 6/16/2020
+Nextech Summer Coding Competition Submission -->
+
+<html>
+	<head>
+		<title>Nextech Summer Competition</title>
+		<link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css />-->
+		<script src="js/particles.js"></script>
+		<script>
+			//particlesJS.load(@dom-id, @path-json, @callback (optional));
+			particlesJS.load('particles-js', 'assets/particles.json', function() {
+				console.log('callback - particles.js config loaded');
+			});
+		</script>
+	</head>
+	<body>
+		<div id="particles-js"></div>
+		<div class="container-title">
+			<h1 class="title">About</h1>
+		</div>
+		<div class="container-primary">
+			<p>This project aims to serve as a proof-of-concept for using machine learning and GPS location time series data to predict whether a user has COVID-19.
+			In production, this would likely take the form of a mobile app which periodically tracks places a user has been.
+			Through this and the power of machine learning, the app would find patterns in this location data and be able to predict whether a user is infected.
+			Additionally, users that have been tested positive for the virus could report their infection status to the app, creating a positive feedback loop and strengthening future predictions.
+			My goal with this app is to help create a safer environment in these hard times and help data scientists in better understanding COVID-19.
+			<h2 style="text-align: center">Project Details</h2>
+			<p>This website consists of four main pages: the home or landing page, this page (the about page), and pages for both data collection and data analysis.
+			To collect data, I created a virtual interactive demo which is meant to simulate a community interacting through travel.
+			Each person and location is represented by a small node, where each node - unless a location node - is able to move freely.
+			Inside each node, there exists a few defining traits, which among many include susceptibility to infection and travel frequency.
+			Travel data between nodes will be recorded over a period of time and used to train a binary classifier.</p>
+			<a class="button-link" href="/Nextech"><div class="button-container">Return Home</div></a>
+		</div>
+	</body>
+</html>

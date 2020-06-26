@@ -3,13 +3,29 @@ Nextech Summer Coding Competition Submission -->
 
 <html>
 	<head>
-		<title>Node-Based Community Simulation</title>
-		<link rel="icon" href="favicon.ico" type="image/x-icon" />
-		<link rel="stylesheet" href="style.css" type="text/css" />
-		<script type="text/javascript" src="app.js"></script>
-		<script type="text/javascript" src="render.js"></script>
+		<title>Nextech Summer Competition</title>
+		<link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css />-->
+		<script src="js/particles.js"></script>
+		<script>
+			//particlesJS.load(@dom-id, @path-json, @callback (optional));
+			particlesJS.load('particles-js', 'assets/particles.json', function() {
+				console.log('callback - particles.js config loaded');
+			});
+		</script>
 	</head>
 	<body>
-		<canvas id="canvas"></canvas>
+		<div id="particles-js"></div>
+		<div class="container-title">
+			<h1 class="title">Using Predictive Modeling with Machine Learning and GPS Location Tracking to Determine COVID-19 Infection Likelihood</h1>
+			<h2 class="subtitle">A Nextech 2020 Summer Coding Challenge Project Submission</h2>
+		</div>
+		<div class="container-primary">
+			<a class="button-link" href="about.html"><div class="button-container">About</div></a>
+			<a class="button-link" href="simulation.html"><div class="button-container">Data Collection</div></a>
+			<a class="button-link" href="#"><div class="button-container">Data Analysis</div></a>
+		</div>
 	</body>
 </html>

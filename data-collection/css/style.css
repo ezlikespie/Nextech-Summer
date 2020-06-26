@@ -1,0 +1,71 @@
+body, html {
+	margin: 0;
+	color: white;
+	font-family: "Calibri";
+}
+
+#particles-js{
+	width: 100%;
+	height: 100%;
+	background-color: #304C89;
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	left: 0;
+}
+
+h1, h2 {
+	font-family: "Calibri Light";
+	margin: 0.1em;
+}
+
+.subtitle {
+	font-weight: 200;
+	font-size: 1.2em;
+}
+
+.container-title {
+	text-align: center;
+	width: 80%;
+	margin: auto;
+	margin-top: 10em;
+}
+
+.container-primary {
+	width: 80%;
+	margin: auto;
+}
+
+.button-container {
+	background-color: white;
+	border-radius: 5px;
+	padding: 1em;
+	box-shadow: 0 2px 0 1px #555;
+	transition: 0.2s;
+}
+
+.button-container:hover {
+	padding: 1em 2em 1em 2em;
+	letter-spacing: 0.2em;
+	transition: 0.2s;
+}
+
+.button-link {
+	text-decoration: none;
+	margin: 2em auto 0 auto;
+	text-transform: uppercase;
+	display: block;
+	color: #678CD1;
+	width: fit-content;
+	font-family: "Arial Black";
+	user-select: none;
+	letter-spacing: 0.1em;
+}
+
+p {
+	text-align: center;
+	font-size: 1.1em;
+}
