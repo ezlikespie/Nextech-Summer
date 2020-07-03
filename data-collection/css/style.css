@@ -27,10 +27,27 @@ h1, h2 {
 	font-size: 1.2em;
 }
 
+.akari-title {
+	text-transform: uppercase;
+	font-size: 5em;
+	font-family: "Courier";
+}
+
+.middle-centered {
+	margin-top: auto;
+	margin-bottom: auto;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
 .container-title {
 	text-align: center;
-	width: 80%;
+	width: 60%;
 	margin: auto;
+}
+
+.container-title-about {
 	margin-top: 10em;
 }
 
@@ -66,6 +83,10 @@ h1, h2 {
 }
 
 p {
-	text-align: center;
+	text-align: justify;
 	font-size: 1.1em;
+}
+
+.about-title {
+	font-size: 3em;
 }

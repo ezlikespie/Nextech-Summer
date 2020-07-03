@@ -18,22 +18,30 @@ Nextech Summer Coding Competition Submission -->
 	</head>
 	<body>
 		<div id="particles-js"></div>
-		<div class="container-title">
-			<h1 class="title">About</h1>
-		</div>
-		<div class="container-primary">
-			<p>This project aims to serve as a proof-of-concept for using machine learning and GPS location time series data to predict whether a user has COVID-19.
-			In production, this would likely take the form of a mobile app which periodically tracks places a user has been.
-			Through this and the power of machine learning, the app would find patterns in this location data and be able to predict whether a user is infected.
-			Additionally, users that have been tested positive for the virus could report their infection status to the app, creating a positive feedback loop and strengthening future predictions.
-			My goal with this app is to help create a safer environment in these hard times and help data scientists in better understanding COVID-19.
-			<h2 style="text-align: center">Project Details</h2>
-			<p>This website consists of four main pages: the home or landing page, this page (the about page), and pages for both data collection and data analysis.
-			To collect data, I created a virtual interactive demo which is meant to simulate a community interacting through travel.
-			Each person and location is represented by a small node, where each node - unless a location node - is able to move freely.
-			Inside each node, there exists a few defining traits, which among many include susceptibility to infection and travel frequency.
-			Travel data between nodes will be recorded over a period of time and used to train a binary classifier.</p>
-			<a class="button-link" href="/Nextech"><div class="button-container">Return Home</div></a>
-		</div>
+			<div class="container-title container-title-about">
+				<h1 class="about-title">About AKARI</h1>
+			</div>
+			<div class="container-primary">
+				<p>This project aims to serve as a proof-of-concept for using machine learning and GPS location time series data to predict whether a user has COVID-19.
+				In production, this would likely take the form of a mobile app which periodically tracks places a user has been.
+				Through this and the power of machine learning, the app would find patterns in this location data and be able to predict whether a user is infected.
+				Additionally, users that have been tested positive for the virus could report their infection status to the app, creating a positive feedback loop and strengthening future predictions.
+				My goal with this app is to help create a safer environment in these hard times and help data scientists in better understanding COVID-19.
+				<img style="width: 8em; display: block; margin: auto;" src="assets/images/akari-borderless.png"/>
+				<h2 style="text-align: center">Project Narrative</h2>
+				<p>Across the world, the spread of COVID-19 has had a profound impact on everyone. In these hard times, it is critical that the public be supplied with resources to both prevent virus spread and to better understand the virus itself. Akari aims to aid in this effort by enabling users to determine their risk in contracting COVID-19 based on their location data and through the use of machine learning algorithms. Furthermore, this same technology could be expanded to study other contagious diseases and aid data scientists by supplying vast datasets. Here's how it would look in production:</p>
+				<ul>
+					<li>A user downloads the Akari app on their mobile device</li>
+					<li>A few pieces of critical information are entered (age, race, previous conditions) upon opening the app for the first time</li>
+					<li>Akari prompts the use of location services and frequently records a user's position</li>
+					<li>Looking at this location data with respect to time and additional information entered by a given user, a binary classifier is trained to predict whether they are infected, even if they do not show symptoms</li>
+					<li>If a user is tested, they would have the option to report their test results to the app, which in turn would create a stronger predictive model</li>
+				</ul>
+				<p>These users' data, in aggregate, would allow data scientists to find outbreak hotspots, and in turn, local health officials could issue warnings to avoid these potentially dangerous areas. Due to the complexity of an app like this, and because it would require many users and large quantities of data, I instead created a simulation of a small community of nodes to showcase the power of this idea. The process taken to develop this project was a little rushed - mostly due to the time of ideation, but in the end, things worked out well. To brainstorm ideas to fit the challenge prompt, I contacted my local health department and science teachers at my school. In the end, I arrived at this idea after hearing Flexware, an engineering firm in Fishers, had been discussing something similar with a client. From there, I knew fairly quickly how I would deploy the project. I decided to use the HTML5 canvas, JavaScript (and jQuery with it), and some simple CSS to create a fun, interactive demo that anyone could understand. Originally, I had considered using TensorFlow.js, a library for machine learning in JavaScript, but because I had only recently begun studying machine learning (and deep learning at that), I decided to instead leave it for a product that would actually reach production. All of the graphics and physics in the community simulation were made from scratch, using a "Node" superclass with subsequent "Person Node" and "Location Node" classes, each representing an individual person and an individual location, respectively. Each node was outfitted with custom rendering and updating methods, given a unique identifier, and tossed into an array. Then, in a separate rendering file, an interval was set, where each frame every node was iterated. Each iteration, the screen was cleared, all the nodes had their update and render methods called, and the camera position was adjusted. In this model, the location nodes represent real life locations that people visit. If many infected person nodes have visited a given location node recently, there is a higher chance that a non-infected person node will become infected when visiting. In the core of each person node, there exists a property called the urge limit. Simply put, the higher this value is, the less often that node will leave their home. Overall, it is apparent that nodes with a lower urge limit become infected more quickly and more frequently than others. Similarly, these nodes also have property called wait time, which determines how long they will stay at a given location. Higher numbers for this property also result in more infections. These inherit characteristics of each node are just a few of many which play into health at large in their virtual world. Upon clicking on a node, a control menu appears, which manages whether a node is infected and gives an option for camera tracking. Most importantly; however, is the button to predict a node's infection status. This feature clearly isn't as robust as it would be in production - especially because the data was essentially manufactured, but it's a good indicator for how easy it would be for a user to predict their own health using this app. In the end, this project doesn't serve as a fully-fledged, ready-for-deployment mobile application, but instead acts as a great proof of concept which a team of developers could pitch to investors in order to build a more robust solution. My hope is that this technology be used to help improve health in communities and create a stronger world at large.</p>
+				<a href="https://github.com/ezlikespie/Nextech-Summer" target="_blank">
+					<img style="display: block; margin: auto; width: 5em;" src="assets/images/github-icon.png" alt="Github Icon"/>
+				</a>
+				<a style="margin-bottom: 5em;" class="button-link" href="/Nextech"><div class="button-container">Return Home</div></a>
+			</div>
 	</body>
 </html>

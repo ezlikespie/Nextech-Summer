@@ -12,6 +12,8 @@ var cameraX = 0;
 var cameraY = 0;
 var cameraVelX = 0;
 var cameraVelY = 0;
+var doCameraFollow = false;
+var cameraFollowNode = null;
 
 window.onload = function(){
 	canvas = document.getElementById("canvas");
@@ -70,6 +72,12 @@ function rectInView(rect){
 }
 
 function updateCameraPos(){
+	if(doCameraFollow){
+		let curNode = entities[cameraFollowNode];
+		cameraX = curNode.x-width/2;
+		cameraY = curNode.y-height/2;
+		return;
+	}
 	cameraVelX *= CAMERA_DECEL;
 	cameraVelY *= CAMERA_DECEL;
 	cameraVelX += (keys[1])?CAMERA_ACC:0;
@@ -92,11 +100,15 @@ function startSimulation() {
 	setup();
 	setInterval(function(){
 		//clear screen
-		drawRect(0,0,width,height,"white");
+		drawRect(0,0,width,height,"#b5c1ff");
 		//iterate nodes
 		for(const entityIndex in entities){
 			const entity = entities[entityIndex];
 			entity.render();
+		}
+		for(const personIndex in people){
+			const person = people[personIndex];
+			person.update();
 		}
 		updateCameraPos();
 	}, 1000/FPS);
@@ -133,4 +145,65 @@ document.onkeyup = function(e){
 			keys[3] = false;
 	}
 }
+
+var nodeControl = {
+	"displayed": false,
+	"currentNode": null
+}
+
+document.onmousedown = function(e){
+	let box = document.getElementById("node-controller-container");
+	if(e.pageX<=box.clientWidth&&e.pageY>=(window.innerHeight-box.clientHeight))
+		return;
+	let adjX = e.pageX+cameraX;
+	let adjY = e.pageY+cameraY;
+	var selNode;
+	for(let id in people){
+		let person = people[id];
+		if(Math.pow(adjX-person.x,2)+Math.pow(adjY-person.y,2)<=400){
+			selNode = person;
+			break;
+		}
+	}
+	if(selNode==null){
+		$("#node-controller-container").css("display","none");
+		nodeControl.displayed = false;
+		return;
+	}
+	nodeControl.displayed = true;
+	nodeControl.currentNode = selNode;
+	$("#node-controller-container").css("display","block");
+	$("#node-controller-infect").prop("checked", selNode.infected);
+	$("#node-controller-camera").prop("checked", selNode.id==cameraFollowNode&&doCameraFollow);
+	$("#node-controller-id").text("id: "+selNode.id);
+	$("#node-controller-predict-answer").css("display", "none");
+}
+
+$(document).ready(function(){
+	$("#node-controller-infect").change(function(){
+		if(nodeControl.displayed) {
+			if(this.checked)
+				nodeControl.currentNode.infect();
+			else
+				nodeControl.currentNode.cure();
+		}
+	});
+	$("#node-controller-camera").change(function(){
+		if(nodeControl.displayed) {
+			if(this.checked) {
+				cameraFollowNode = nodeControl.currentNode.id;
+				doCameraFollow = true;
+			}
+			else {
+				doCameraFollow = false;
+			}
+		}
+	});
+	$("#node-controller-predict-button").click(function(){
+		if(nodeControl.displayed) {
+			$("#node-controller-predict-answer").css("display", "block");
+			$("#node-controller-predict-answer").text(((nodeControl.currentNode.infected)?"INFECTED":"NOT INFECTED"));
+		}
+	});
+});
 
